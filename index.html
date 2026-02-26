@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caás Consultoria | Head de Operações as a Service</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --primary: #B8956A;
+            --primary-light: #D4B896;
+            --primary-dark: #8B6F47;
+            --dark: #2C2C2E;
+            --dark-light: #3A3A3C;
+            --gray: #8E8E93;
+            --light: #F2F2F7;
+            --white: #FFFFFF;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+        
+        /* Header */
+        header {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(184,149,106,0.2);
+            transition: all 0.3s;
+        }
+        nav {
+            max-width: 1400px; margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--dark); }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a {
+            color: var(--dark); text-decoration: none; font-weight: 400;
+            font-size: 0.95rem; letter-spacing: 0.5px; transition: color 0.3s; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 0; height: 1px; background: var(--primary); transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .cta-button {
+            background: var(--primary); color: var(--white);
+            padding: 0.9rem 2rem; border: none; cursor: pointer;
+            font-weight: 500; font-size: 0.95rem; letter-spacing: 0.5px;
+            transition: all 0.3s; text-decoration: none; display: inline-block;
+        }
+        .cta-button:hover {
+            background: var(--primary-dark); transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184,149,106,0.3);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 8rem 3rem 4rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(184,149,106,0.03) 2px, rgba(184,149,106,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(184,149,106,0.03) 2px, rgba(184,149,106,0.03) 4px);
+            opacity: 0.5;
+        }
+        .hero-content {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.1fr 0.9fr;
+            gap: 6rem; align-items: center; position: relative; z-index: 1;
+        }
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem; font-weight: 300; line-height: 1.2;
+            margin-bottom: 2rem; color: var(--white); letter-spacing: -1px;
+        }
+        .hero-text h1 strong { font-weight: 700; color: var(--primary); display: block; }
+        .hero-text .tagline {
+            font-size: 1.3rem; color: var(--primary-light);
+            margin-bottom: 3rem; font-weight: 300; letter-spacing: 0.5px;
+        }
+        .hero-visual { position: relative; height: 500px; }
+        .floating-card {
+            position: absolute;
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(20px);
+            border: 1px solid rgba(184,149,106,0.3);
+            padding: 2rem; animation: float 6s ease-in-out infinite;
+        }
+        .floating-card:nth-child(1) { top: 0; right: 0; width: 280px; animation-delay: 0s; }
+        .floating-card:nth-child(2) { bottom: 100px; left: 0; width: 260px; animation-delay: 2s; }
+        .floating-card:nth-child(3) { top: 150px; left: 50px; width: 240px; animation-delay: 4s; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+        .floating-card h3 {
+            font-family: 'Cormorant Garamond', serif; color: var(--primary);
+            font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;
+        }
+        .floating-card p { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6; }
+        
+        /* Sobre */
+        .sobre { padding: 8rem 3rem; background: var(--white); }
+        .sobre-content {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 0.9fr 1.1fr;
+            gap: 6rem; align-items: center;
+        }
+        .sobre-image { position: relative; }
+        .sobre-image::before {
+            content: ''; position: absolute; top: -20px; left: -20px;
+            width: 100%; height: 100%; border: 2px solid var(--primary); z-index: -1;
+        }
+        .sobre-image img { width: 100%; height: 600px; object-fit: cover; filter: grayscale(20%); }
+        .section-label {
+            font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--primary); margin-bottom: 1rem; font-weight: 500;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif; font-size: 3.5rem;
+            color: var(--dark); margin-bottom: 2rem; font-weight: 600; line-height: 1.2;
+        }
+        .sobre-text p { color: var(--gray); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-top: 3rem; }
+        .expertise-item { padding: 1.5rem; border: 1px solid var(--primary); transition: all 0.3s; }
+        .expertise-item:hover { background: var(--primary); transform: translateX(10px); }
+        .expertise-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .expertise-item:hover h4, .expertise-item:hover p { color: var(--white); }
+        .expertise-item p { font-size: 0.9rem; color: var(--gray); }
+        
+        /* Serviços */
+        .servicos { padding: 8rem 3rem; background: var(--light); }
+        .servicos-content { max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .servicos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; }
+        .servico-card {
+            background: var(--white); padding: 3rem 2.5rem;
+            transition: all 0.4s; position: relative; overflow: hidden;
+        }
+        .servico-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 4px; background: var(--primary);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+        }
+        .servico-card:hover::before { transform: scaleX(1); }
+        .servico-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .servico-icon { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .servico-card h3 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+            color: var(--dark); margin-bottom: 1rem; font-weight: 600;
+        }
+        .servico-card p { color: var(--gray); line-height: 1.8; margin-bottom: 2rem; }
+        .servico-features { list-style: none; margin-bottom: 2rem; }
+        .servico-features li {
+            padding: 0.5rem 0; color: var(--gray); font-size: 0.95rem;
+            display: flex; align-items: center; gap: 0.7rem;
+        }
+        .servico-features li::before { content: none; }
+        .saiba-mais {
+            color: var(--primary); text-decoration: none; font-weight: 500;
+            font-size: 0.95rem; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s;
+        }
+        .saiba-mais:hover { gap: 1rem; }
+
+        /* ── Head Fracionado ── */
+        .card-destaque {
+            grid-column: 1 / -1;
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem; background: var(--dark) !important;
+            padding: 3rem 2.5rem; transition: all 0.4s;
+        }
+        .card-destaque::before { transform: scaleX(1) !important; }
+        .card-destaque:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important; }
+        .card-destaque h3 { color: var(--primary-light) !important; }
+        .card-destaque > div > p { color: rgba(255,255,255,0.72) !important; }
+        .card-destaque .servico-features li { color: rgba(255,255,255,0.75) !important; }
+        .card-destaque .saiba-mais { color: var(--primary-light) !important; }
+        .destaque-badge {
+            display: inline-block;
+            background: rgba(184,149,106,0.15); border: 1px solid rgba(184,149,106,0.35);
+            color: var(--primary-light); font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase;
+            padding: 0.3rem 0.9rem; margin-bottom: 1rem;
+        }
+        .pacotes-col-title {
+            font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+            color: rgba(255,255,255,0.35); font-weight: 500; margin-bottom: 1.5rem;
+        }
+        .pacote-item {
+            border: 1px solid rgba(184,149,106,0.2);
+            padding: 1.25rem 1.5rem; margin-bottom: 1rem; transition: border-color 0.3s;
+        }
+        .pacote-item:hover { border-color: var(--primary); }
+        .pacote-item-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+        .pacote-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .dot-a { background: var(--primary-light); }
+        .dot-b { background: var(--primary); }
+        .dot-c { background: var(--primary-dark); }
+        .pacote-item strong {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+            font-weight: 600; color: var(--primary-light);
+        }
+        .pacote-item p {
+            font-size: 0.85rem !important; color: rgba(255,255,255,0.55) !important;
+            margin-bottom: 0 !important; padding-left: 1.4rem;
+        }
+        .destaque-nota {
+            margin-top: 1.5rem; padding: 1rem 1.25rem;
+            border-left: 2px solid rgba(184,149,106,0.35);
+            font-size: 0.82rem; color: rgba(255,255,255,0.4) !important;
+            line-height: 1.6; margin-bottom: 0 !important;
+        }
+
+        /* Ícones de contato */
+        .contact-icons { display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem; }
+        .contact-icon {
+            display: flex; align-items: center; justify-content: center;
+            width: 52px; height: 52px;
+            border: 2px solid var(--primary); color: var(--primary);
+            text-decoration: none; font-size: 1.3rem; transition: all 0.3s;
+        }
+        .contact-icon:hover {
+            background: var(--primary); color: var(--white); transform: translateY(-3px);
+        }
+
+        /* Processo */
+        .processo { padding: 8rem 3rem; background: var(--dark); color: var(--white); }
+        .processo-content { max-width: 1400px; margin: 0 auto; }
+        .processo .section-title { color: var(--white); }
+        .processo-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-top: 5rem; }
+        .step { text-align: center; position: relative; }
+        .step::after {
+            content: ''; position: absolute; top: 40px; right: -1.5rem;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+        }
+        .step:last-child::after { display: none; }
+        .step-number {
+            width: 80px; height: 80px; border: 2px solid var(--primary); color: var(--primary);
+            margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center;
+            font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; transition: all 0.3s;
+        }
+        .step:hover .step-number { background: var(--primary); color: var(--dark); transform: scale(1.1); }
+        .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-light); }
+        .step p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.7; }
+        
+        /* CTA Final */
+        .cta-final { padding: 8rem 3rem; background: var(--white); text-align: center; }
+        .cta-final-content { max-width: 900px; margin: 0 auto; }
+        .cta-final h2 {
+            font-family: 'Cormorant Garamond', serif; font-size: 3.5rem;
+            color: var(--dark); margin-bottom: 2rem; font-weight: 600; line-height: 1.3;
+        }
+        .cta-final p { color: var(--gray); font-size: 1.2rem; margin-bottom: 3rem; line-height: 1.8; }
+        .cta-buttons { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+        .secondary-button { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .secondary-button:hover { background: var(--primary); color: var(--white); }
+        
+        /* Footer */
+        footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 4rem 3rem 2rem; }
+        .footer-content {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem; margin-bottom: 3rem;
+        }
+        .footer-brand h3 { font-family: 'Cormorant Garamond', serif; color: var(--primary); font-size: 2rem; margin-bottom: 1rem; }
+        .footer-brand p { line-height: 1.8; margin-bottom: 0.5rem; }
+        .footer-social { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+        .footer-social a {
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border: 1px solid rgba(184,149,106,0.3);
+            color: rgba(255,255,255,0.6); text-decoration: none; transition: all 0.3s;
+        }
+        .footer-social a:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+        .footer-section h4 { color: var(--primary); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 1.5rem; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid rgba(184,149,106,0.2); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content, .sobre-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .servicos-grid { grid-template-columns: 1fr; }
+            .card-destaque { grid-template-columns: 1fr !important; grid-column: auto !important; }
+            .processo-steps { grid-template-columns: repeat(2,1fr); }
+            .step::after { display: none; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .hero, .sobre, .servicos, .processo, .cta-final { padding: 4rem 1.5rem; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .processo-steps { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-social { justify-content: center; }
+            .expertise-grid { grid-template-columns: 1fr; }
+        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Caás <span>Consultoria</span></div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#processo">Processo</a></li>
+            </ul>
+            <a href="#contato" class="cta-button">Fale Conosco</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Transformando operações caóticas em <strong>máquinas de eficiência</strong></h1>
+                <p class="tagline">Head de Operações as a Service para empresas que querem crescer com excelência operacional.</p>
+                <a href="#contato" class="cta-button">Agendar Diagnóstico</a>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card"><h3>+40%</h3><p>Aumento médio em eficiência operacional dos nossos clientes</p></div>
+                <div class="floating-card"><h3>60 dias</h3><p>Tempo médio para resultados mensuráveis e transformação visível</p></div>
+                <div class="floating-card"><h3>70%</h3><p>Economia vs contratar COO full-time com a mesma expertise</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre fade-in">
+        <div class="sobre-content">
+            <div class="sobre-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1000&fit=crop" alt="Operações Estratégicas">
+            </div>
+            <div class="sobre-text">
+                <div class="section-label">Quem Somos</div>
+                <h2 class="section-title">Liderança operacional estratégica quando você mais precisa</h2>
+                <p>A Caás Consultoria oferece liderança operacional sênior em regime fracionado, transformando empresas que precisam profissionalizar suas operações mas não têm budget ou necessidade de contratar um COO full-time.</p>
+                <p>Com mais de uma década de experiência estruturando processos escaláveis em startups, scale-ups e empresas tradicionais, implementamos transformações que geram resultados mensuráveis em 60-90 dias.</p>
+                <div class="expertise-grid">
+                    <div class="expertise-item"><h4>Diagnóstico</h4><p>Identificação precisa de gargalos e oportunidades operacionais</p></div>
+                    <div class="expertise-item"><h4>Implementação</h4><p>Execução prática, não apenas recomendações teóricas</p></div>
+                    <div class="expertise-item"><h4>Capacitação</h4><p>Transferência de conhecimento para autonomia da equipe</p></div>
+                    <div class="expertise-item"><h4>Resultados</h4><p>Compromisso com métricas e ROI mensurável</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="servicos fade-in">
+        <div class="servicos-content">
+            <div class="section-header">
+                <div class="section-label">O que oferecemos</div>
+                <h2 class="section-title">Serviços Especializados</h2>
+            </div>
+            <div class="servicos-grid">
+
+                <div class="servico-card">
+                    <div class="servico-icon">🔍</div>
+                    <h3>Diagnóstico Operacional</h3>
+                    <p>Mapeamento completo de processos e identificação dos principais gargalos que impedem seu crescimento.</p>
+                    <ul class="servico-features"><li>Gap Map visual executivo</li><li>3 Quick Wins imediatos</li><li>Análise de maturidade</li><li>Roadmap de evolução</li></ul>
+                    <a href="#contato" class="saiba-mais">Saiba mais →</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">⚙️</div>
+                    <h3>Implementação Completa</h3>
+                    <p>Desenhamos e implementamos processos escaláveis, com KPIs, dashboards e treinamento da equipe.</p>
+                    <ul class="servico-features"><li>Playbook operacional</li><li>SOPs documentados</li><li>Dashboards configurados</li><li>Automações práticas</li></ul>
+                    <a href="#contato" class="saiba-mais">Saiba mais →</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">🎯</div>
+                    <h3>HOaaS Fracionado</h3>
+                    <p>Head de Operações dedicado em regime contínuo para gestão estratégica e otimização constante.</p>
+                    <ul class="servico-features"><li>2-4 dias por semana</li><li>Participação estratégica</li><li>Gestão de projetos</li><li>Coaching de lideranças</li></ul>
+                    <a href="#contato" class="saiba-mais">Saiba mais →</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">📚</div>
+                    <h3>Workshops</h3>
+                    <p>Capacitação intensiva em metodologias operacionais, processos, KPIs e ferramentas de automação.</p>
+                    <ul class="servico-features"><li>Mapeamento de processos</li><li>Métricas operacionais</li><li>Ferramentas no-code</li><li>Melhoria contínua</li></ul>
+                    <a href="#contato" class="saiba-mais">Saiba mais →</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">🔧</div>
+                    <h3>Projetos Customizados</h3>
+                    <p>Soluções sob medida para desafios operacionais específicos da sua empresa e setor.</p>
+                    <ul class="servico-features"><li>Escopo personalizado</li><li>Metodologia adaptada</li><li>Foco em resultados</li><li>Flexibilidade total</li></ul>
+                    <a href="#contato" class="saiba-mais">Saiba mais →</a>
+                </div>
+
+                <!-- HEAD FRACIONADO — card destaque full-width -->
+                <div class="servico-card card-destaque">
+
+                    <div>
+                        <div class="servico-icon">💼</div>
+                        <h3>Head Fracionado<br>por Assinatura</h3>
+                        <p>Sua empresa tem uma Head de Operações ativa, com presença física regular e acompanhamento semanal, sem o custo de um CLT. Um Head full-time custa entre R$&nbsp;15.000 e R$&nbsp;30.000/mês fora encargos. Entregamos presença real e resultado real, a uma fração desse custo.</p>
+                        <a href="#contato" class="saiba-mais">Quero conhecer →</a>
+                    </div>
+
+                    <div>
+                        <p class="pacotes-col-title">Incluso em todos os pacotes</p>
+                        <ul class="servico-features">
+                            <li>Visitas presenciais (dia todo, 9h–18h)</li>
+                            <li>Reunião semanal online com gestores (1h)</li>
+                            <li>Relatório executivo semanal para o CEO</li>
+                            <li>Canal direto, resposta em até 24h úteis</li>
+                            <li>Orientação sobre processos, ferramentas e pessoas</li>
+                        </ul>
+                        <p class="destaque-nota">Na semana com visita presencial não há reunião online. Custos de deslocamento, alimentação e estadia por conta do cliente.</p>
+                    </div>
+
+                    <div>
+                        <p class="pacotes-col-title">Escolha o pacote ideal</p>
+                        <div class="pacote-item">
+                            <div class="pacote-item-top"><span class="pacote-dot dot-a"></span><strong>Essencial</strong></div>
+                            <p>1 visita/mês + 1h semanal online, para operações estáveis que precisam de ritmo e supervisão mensal</p>
+                        </div>
+                        <div class="pacote-item">
+                            <div class="pacote-item-top"><span class="pacote-dot dot-b"></span><strong>Avançado</strong></div>
+                            <p>2 visitas/mês + 1h semanal online, para empresas em crescimento que precisam de mais presença</p>
+                        </div>
+                        <div class="pacote-item">
+                            <div class="pacote-item-top"><span class="pacote-dot dot-c"></span><strong>Imersão</strong></div>
+                            <p>1 visita/semana + 1h online, para momentos críticos, com a intensidade de um CLT sem o custo</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo -->
+    <section id="processo" class="processo fade-in">
+        <div class="processo-content">
+            <div class="section-header">
+                <div class="section-label" style="color:var(--primary)">Como Trabalhamos</div>
+                <h2 class="section-title">Metodologia Comprovada</h2>
+            </div>
+            <div class="processo-steps">
+                <div class="step"><div class="step-number">1</div><h3>Diagnóstico</h3><p>Mapeamos processos críticos e identificamos gargalos em análise profunda de 7-10 dias</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Planejamento</h3><p>Criamos roadmap estratégico com quick wins e projetos estruturantes priorizados</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Implementação</h3><p>Executamos mão na massa junto com sua equipe - processos, dashboards, automações</p></div>
+                <div class="step"><div class="step-number">4</div><h3>Autonomia</h3><p>Capacitamos seu time para sustentar e evoluir a operação sem dependência externa</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="contato" class="cta-final fade-in">
+        <div class="cta-final-content">
+            <h2>Pronto para transformar sua operação?</h2>
+            <p>Agende uma conversa estratégica sem compromisso e descubra como podemos acelerar seus resultados operacionais em 60-90 dias.</p>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Caás Consultoria</h3>
+                <p>Transformando operações caóticas em máquinas de eficiência desde 2023.</p>
+                <p>📍 Vinhedo, São Paulo, Brasil</p>
+                <div class="footer-social">
+                    <a href="https://wa.me/5511971699576" title="WhatsApp" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/carolalves28/" title="Instagram" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="mailto:caasconsultoriahoaas@gmail.com" title="E-mail">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/carol-alves-79a48b86/" title="LinkedIn" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Serviços</h4>
+                <ul class="footer-links">
+                    <li><a href="#servicos">Diagnóstico Operacional</a></li>
+                    <li><a href="#servicos">Implementação Completa</a></li>
+                    <li><a href="#servicos">HOaaS Fracionado</a></li>
+                    <li><a href="#servicos">Workshops & Treinamentos</a></li>
+                    <li><a href="#servicos">Head Fracionado por Assinatura</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5511971699576">WhatsApp</a></li>
+                    <li><a href="mailto:caasconsultoriahoaas@gmail.com">caasconsultoriahoaas@gmail.com</a></li>
+                    <li><a href="https://www.instagram.com/carolalves28/">Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/in/carol-alves-79a48b86/">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Caás Consultoria. Todos os direitos reservados.</p></div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.style.padding = '0.8rem 0';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.padding = '';
+                header.style.boxShadow = '';
+            }
+        });
+    </script>
+</body>
+</html>
