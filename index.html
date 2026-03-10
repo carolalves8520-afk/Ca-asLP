@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ca'as Consultoria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #1A1A1C;
+      --bg2:       #222224;
+      --card:      #2C2C2E;
+      --card2:     #323234;
+      --gold:      #B8956A;
+      --gold-l:    #D4A97A;
+      --gold-dim:  rgba(184,149,106,.15);
+      --white:     #F5F0EA;
+      --gray:      #A09080;
+      --gray2:     #6B6058;
+      --border:    rgba(184,149,106,.2);
+      --r:         8px;
+      --font-d:    'Lora', Georgia, serif;
+      --font-s:    'Poppins', sans-serif;
+      --max:       1120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-s);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Typography ─────────────────────────────────────────────────── */
+    h1, h2, h3 { font-family: var(--font-d); font-weight: 500; line-height: 1.25; }
+
+    .label {
+      font-family: var(--font-s);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── Layout ─────────────────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 96px 0; }
+
+    .divider {
+      width: 48px; height: 2px;
+      background: var(--gold);
+      margin: 1.2rem 0 2rem;
+    }
+
+    /* ── Grain overlay ──────────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .45;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,26,28,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: all .3s;
+    }
+
+    .nav-logo {
+      font-family: var(--font-d);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 2.4rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn-nav {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: .5rem 1.4rem;
+      border-radius: var(--r);
+      font-family: var(--font-s);
+      font-size: .82rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+
+    .btn-nav:hover { background: var(--gold); color: var(--bg); }
+
+    /* ── Buttons ────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .85rem 2rem;
+      border-radius: var(--r);
+      font-family: var(--font-s);
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .25s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-l);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,149,106,.28);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: var(--gold-dim);
+      transform: translateY(-2px);
+    }
+
+    /* ── HERO ───────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(184,149,106,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.18;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    .hero-title em { color: var(--gold); font-style: italic; }
+
+    .hero-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-pillars {
+      display: flex; flex-direction: column; gap: .6rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-pillar {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .88rem;
+      color: var(--white);
+    }
+
+    .hero-pillar::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* hero visual */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card-stack {
+      position: relative;
+    }
+
+    .hero-card-bg {
+      position: absolute;
+      top: 20px; left: 20px;
+      right: -20px; bottom: -20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .hero-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.4rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .stat-item {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.4rem 1rem;
+      text-align: center;
+    }
+
+    .stat-item:last-child {
+      grid-column: span 2;
+    }
+
+    .stat-num {
+      font-family: var(--font-d);
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+
+    .stat-label {
+      font-size: .78rem;
+      color: var(--gray);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* ── FRASE DE POSICIONAMENTO ────────────────────────────────────── */
+    #posicao {
+      padding: 64px 0;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    #posicao blockquote {
+      font-family: var(--font-d);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-style: italic;
+      color: var(--white);
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    #posicao blockquote em { color: var(--gold); font-style: normal; }
+
+    /* ── PROBLEMA ───────────────────────────────────────────────────── */
+    #problema {
+      background: var(--bg);
+    }
+
+    .problema-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .problema-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .problema-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      color: var(--gray);
+      font-size: .95rem;
+    }
+
+    .problema-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: .65rem;
+    }
+
+    .problema-highlight {
+      background: var(--card);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1.4rem 1.6rem;
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── SERVIÇOS ───────────────────────────────────────────────────── */
+    #servicos {
+      background: var(--bg2);
+    }
+
+    .section-head { margin-bottom: 3.5rem; }
+
+    .section-head h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: .6rem; }
+
+    .section-head p { color: var(--gray); max-width: 560px; font-size: .95rem; }
+
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .pilar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color .25s, transform .25s;
+    }
+
+    .pilar-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .pilar-num {
+      font-family: var(--font-d);
+      font-size: 2.8rem;
+      color: var(--gold-dim);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .75rem;
+    }
+
+    .pilar-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: .5rem;
+      color: var(--white);
+    }
+
+    .pilar-card > p {
+      color: var(--gray);
+      font-size: .88rem;
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+
+    .pilar-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .pilar-items li {
+      font-size: .84rem;
+      color: var(--gray);
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+    }
+
+    .pilar-items li::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: .58rem;
+    }
+
+    /* ── CANAIS ─────────────────────────────────────────────────────── */
+    #canais {
+      background: var(--bg);
+    }
+
+    .canais-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .canais-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin: 1.5rem 0;
+    }
+
+    .canais-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      color: var(--gray);
+      font-size: .92rem;
+    }
+
+    .canais-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: .65rem;
+    }
+
+    .canais-quote {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.4rem;
+      position: relative;
+    }
+
+    .canais-quote::before {
+      content: '\201C';
+      font-family: var(--font-d);
+      font-size: 6rem;
+      color: var(--gold-dim);
+      line-height: 1;
+      position: absolute;
+      top: .5rem; left: 1.4rem;
+    }
+
+    .canais-quote p {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .canais-quote em { color: var(--gold); font-style: normal; }
+
+    /* ── HEAD FRACIONADO ────────────────────────────────────────────── */
+    #fracionado {
+      background: var(--bg2);
+    }
+
+    .frac-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .frac-badge {
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: .35rem 1rem;
+      font-size: .78rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    .frac-desc {
+      color: var(--gray);
+      font-size: .95rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+    }
+
+    .frac-inc-title {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .frac-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .frac-includes li {
+      font-size: .88rem;
+      color: var(--gray);
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+    }
+
+    .check {
+      width: 16px; height: 16px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .6rem;
+      color: var(--gold);
+      margin-top: .2rem;
+    }
+
+    .frac-note {
+      font-size: .78rem;
+      color: var(--gray2);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      line-height: 1.6;
+    }
+
+    .pacotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+    }
+
+    .pacote-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: border-color .25s;
+    }
+
+    .pacote-card:hover { border-color: var(--gold); }
+
+    .pacote-card h4 {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+      color: var(--gold);
+    }
+
+    .pacote-card p {
+      font-size: .84rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── PROCESSO ───────────────────────────────────────────────────── */
+    #processo {
+      background: var(--bg);
+    }
+
+    .processo-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .processo-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 15%; right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+      opacity: .3;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-d);
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .step h3 {
+      font-size: 1.05rem;
+      margin-bottom: .5rem;
+      color: var(--white);
+    }
+
+    .step p {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ── PARA QUEM ──────────────────────────────────────────────────── */
+    #para-quem {
+      background: var(--bg2);
+    }
+
+    .para-quem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      margin-top: 1.5rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      font-size: .93rem;
+      color: var(--white);
+    }
+
+    .check-icon {
+      width: 20px; height: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: .15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-icon::after {
+      content: '✓';
+      font-size: .65rem;
+      color: var(--gold);
+    }
+
+    .sobre-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.4rem;
+    }
+
+    /* ── SOBRE ──────────────────────────────────────────────────────── */
+    #sobre {
+      background: var(--bg);
+    }
+
+    .sobre-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-exp {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .sobre-exp li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .9rem;
+      color: var(--gray);
+    }
+
+    .sobre-exp li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: .6rem;
+    }
+
+    .sobre-frase {
+      background: var(--card);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1.4rem 1.6rem;
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── CTA FINAL ──────────────────────────────────────────────────── */
+    #cta-final {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 96px 0;
+    }
+
+    #cta-final h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      max-width: 680px;
+      margin: 0 auto 1rem;
+    }
+
+    #cta-final p {
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 2.4rem;
+      font-size: .96rem;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-d);
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+    }
+
+    .footer-brand p {
+      font-size: .83rem;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: .75rem;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem .85rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      color: var(--gray);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 400;
+      transition: border-color .2s, color .2s;
+    }
+
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer-col h4 {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+
+    .footer-col a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: color .2s;
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      font-size: .78rem;
+      color: var(--gray2);
+    }
+
+    /* ── Animations ─────────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { animation: fadeUp .7s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .45s; }
+
+    /* ── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner, .problema-grid, .canais-inner, .para-quem-grid,
+      .sobre-inner, .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pilares-grid, .pacotes-grid, .processo-steps { grid-template-columns: 1fr; }
+      .processo-steps::before { display: none; }
+      .nav-links { display: none; }
+      .stat-item:last-child { grid-column: span 1; }
+      .frac-header { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">Ca<span>'</span>as Consultoria</a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#processo">Como funciona</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+  </ul>
+  <a href="https://wa.me/5511971699576" class="btn-nav" target="_blank">Agendar conversa</a>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow fade-up">
+          <span class="label">Ca'as Consultoria</span>
+        </div>
+        <h1 class="hero-title fade-up delay-1">
+          Estrutura, estratégia e crescimento com <em>consistência.</em>
+        </h1>
+        <p class="hero-desc fade-up delay-2">
+          Ajudamos empresas a organizar operações, estruturar processos e construir canais de crescimento que sustentem a evolução do negócio. Trabalhamos ao lado da liderança para transformar estratégia em execução.
+        </p>
+        <div class="hero-pillars fade-up delay-3">
+          <div class="hero-pillar">Diagnóstico claro</div>
+          <div class="hero-pillar">Estrutura operacional</div>
+          <div class="hero-pillar">Crescimento com método</div>
+        </div>
+        <div class="hero-cta fade-up delay-4">
+          <a href="https://wa.me/5511971699576" class="btn btn-primary" target="_blank">
+            Agendar uma conversa
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up delay-2">
+        <div class="hero-card-stack">
+          <div class="hero-card-bg"></div>
+          <div class="hero-card">
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-num">+40%</div>
+                <div class="stat-label">Aumento médio em eficiência operacional</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">60d</div>
+                <div class="stat-label">Tempo médio para resultados mensuráveis</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">70%</div>
+                <div class="stat-label">Economia vs contratar um COO full-time com a mesma expertise</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── POSICIONAMENTO ───────────────────────────────────────────────── -->
+<section id="posicao">
+  <div class="container">
+    <blockquote>
+      Empresas não escalam apenas vendendo mais.<br>
+      Elas escalam <em>estruturando como o crescimento acontece.</em>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ── PROBLEMA ────────────────────────────────────────────────────── -->
+<section id="problema">
+  <div class="container">
+    <div class="problema-grid">
+      <div>
+        <span class="label">O desafio</span>
+        <div class="divider"></div>
+        <h2>O problema que muitas empresas enfrentam</h2>
+        <ul class="problema-list">
+          <li>Dependência excessiva do dono nas decisões</li>
+          <li>Processos pouco estruturados</li>
+          <li>Dificuldade para escalar vendas</li>
+          <li>Crescimento desorganizado</li>
+          <li>Áreas que não se conversam dentro da empresa</li>
+        </ul>
+        <p style="color:var(--gray); font-size:.93rem;">
+          Isso cria gargalos que limitam o crescimento. Sem estrutura, o crescimento se torna pesado, lento e muitas vezes caótico.
+        </p>
+      </div>
+      <div>
+        <div class="problema-highlight">
+          Crescer sem estrutura não é crescimento. É acúmulo de problemas que o sucesso ainda não revelou.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVIÇOS ─────────────────────────────────────────────────────── -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">O que fazemos</span>
+      <div class="divider"></div>
+      <h2>Três pilares fundamentais do crescimento</h2>
+      <p>A Ca'as Consultoria atua organizando e estruturando os elementos que sustentam uma operação de crescimento consistente.</p>
+    </div>
+    <div class="pilares-grid">
+
+      <div class="pilar-card">
+        <div class="pilar-num">01</div>
+        <h3>Estrutura Estratégica</h3>
+        <p>Organização da visão de crescimento da empresa, definição de prioridades e direcionamento estratégico.</p>
+        <p style="color:var(--gold); font-size:.85rem; font-style:italic; margin-top:.5rem;">Transformamos objetivos em planos claros de execução.</p>
+      </div>
+
+      <div class="pilar-card">
+        <div class="pilar-num">02</div>
+        <h3>Estrutura Operacional</h3>
+        <p>Organização dos processos que sustentam o funcionamento da empresa.</p>
+        <ul class="pilar-items">
+          <li>Desenho e melhoria de processos</li>
+          <li>Organização de fluxos de trabalho</li>
+          <li>Definição de responsabilidades</li>
+          <li>Melhoria da comunicação entre áreas</li>
+          <li>Apoio à liderança na execução</li>
+        </ul>
+      </div>
+
+      <div class="pilar-card">
+        <div class="pilar-num">03</div>
+        <h3>Estrutura de Crescimento</h3>
+        <p>Desenvolvimento de caminhos estruturados para ampliar a geração de oportunidades e vendas.</p>
+        <ul class="pilar-items">
+          <li>Organização do processo comercial</li>
+          <li>Definição de estratégias de crescimento</li>
+          <li>Criação de canais complementares de vendas</li>
+          <li>Estruturação de parcerias estratégicas</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CANAIS ───────────────────────────────────────────────────────── -->
+<section id="canais">
+  <div class="container">
+    <div class="canais-inner">
+      <div>
+        <span class="label">Canais de crescimento</span>
+        <div class="divider"></div>
+        <h2>Distribuição como alavanca de escala</h2>
+        <p style="color:var(--gray); font-size:.93rem; margin-bottom:1rem;">
+          Um dos grandes limitadores de crescimento em muitas empresas é a dependência de poucos canais de venda. Empresas que escalam constroem redes de distribuição e parcerias estratégicas que ampliam o alcance do produto ou serviço.
+        </p>
+        <p style="color:var(--gray); font-size:.93rem; margin-bottom:1.5rem;">Isso pode incluir:</p>
+        <ul class="canais-list">
+          <li>Parceiros comerciais</li>
+          <li>Empresas que recomendam o serviço</li>
+          <li>Consultores que indicam soluções</li>
+          <li>Empresas de tecnologia que integram serviços</li>
+          <li>Alianças estratégicas com negócios complementares</li>
+        </ul>
+        <p style="color:var(--gray); font-size:.9rem; margin-top:1rem;">
+          A Ca'as Consultoria ajuda a identificar, estruturar e organizar esses canais, criando novos pontos de entrada para o crescimento da empresa.
+        </p>
+      </div>
+      <div>
+        <div class="canais-quote">
+          <p>Empresas que escalam não dependem de um único canal de vendas.<br><em>Elas constroem distribuição.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HEAD FRACIONADO ──────────────────────────────────────────────── -->
+<section id="fracionado">
+  <div class="container">
+    <div class="frac-header">
+      <div>
+        <span class="label">Serviço</span>
+        <div class="divider"></div>
+        <h2>Head de Operações as a Service<br>Fracionado por Assinatura</h2>
+      </div>
+      <span class="frac-badge">HOaaS</span>
+    </div>
+
+    <p class="frac-desc">
+      Sua empresa conta com uma Head de Operações ativa, com presença física regular e acompanhamento semanal, sem o custo de um CLT. Um Head full-time custa entre R$ 15.000 e R$ 30.000/mês fora encargos. Entregamos presença real e resultado real, a uma fração desse custo.
+    </p>
+
+    <p class="frac-inc-title">Incluso em todos os pacotes</p>
+    <ul class="frac-includes">
+      <li><span class="check">✓</span> Visitas presenciais (dia todo, 9h–18h)</li>
+      <li><span class="check">✓</span> Reunião semanal online com gestores (1h)</li>
+      <li><span class="check">✓</span> Relatório executivo semanal para o CEO</li>
+      <li><span class="check">✓</span> Canal direto, resposta em até 24h úteis</li>
+      <li><span class="check">✓</span> Orientação sobre processos, ferramentas e pessoas</li>
+    </ul>
+    <p class="frac-note">Na semana com visita presencial não há reunião online. Custos de deslocamento, alimentação e estadia por conta do cliente.</p>
+
+    <div class="pacotes-grid">
+      <div class="pacote-card">
+        <h4>Essencial</h4>
+        <p>1 visita/mês + 1h semanal online, para operações estáveis que precisam de ritmo e supervisão mensal.</p>
+      </div>
+      <div class="pacote-card">
+        <h4>Avançado</h4>
+        <p>2 visitas/mês + 1h semanal online, para empresas em crescimento que precisam de mais presença.</p>
+      </div>
+      <div class="pacote-card">
+        <h4>Imersão</h4>
+        <p>1 visita/semana + 1h online, para momentos críticos, com a intensidade de um CLT sem o custo.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a href="https://wa.me/5511971699576" class="btn btn-outline" target="_blank">Quero conhecer os pacotes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESSO ─────────────────────────────────────────────────────── -->
+<section id="processo">
+  <div class="container">
+    <div class="section-head" style="text-align:center; max-width:600px; margin:0 auto;">
+      <span class="label">Como funciona</span>
+      <div class="divider" style="margin-left:auto; margin-right:auto;"></div>
+      <h2>O trabalho acontece de forma estruturada e próxima da liderança</h2>
+    </div>
+    <div class="processo-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Diagnóstico</h3>
+        <p>Entendimento do momento atual da empresa, seus desafios e oportunidades de evolução.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Estruturação</h3>
+        <p>Desenvolvimento das estratégias e organização das estruturas necessárias para melhorar a operação e o crescimento.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Implementação e acompanhamento</h3>
+        <p>Apoio na implementação das melhorias, garantindo que as mudanças realmente aconteçam no dia a dia da empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARA QUEM ────────────────────────────────────────────────────── -->
+<section id="para-quem">
+  <div class="container">
+    <div class="para-quem-grid">
+      <div>
+        <span class="label">Para quem é</span>
+        <div class="divider"></div>
+        <h2>A consultoria é para empresas que</h2>
+        <ul class="check-list">
+          <li><span class="check-icon"></span> Estão em fase de crescimento</li>
+          <li><span class="check-icon"></span> Sentem que a operação está desorganizada</li>
+          <li><span class="check-icon"></span> Dependem muito do dono para decisões</li>
+          <li><span class="check-icon"></span> Querem estruturar melhor vendas e processos</li>
+          <li><span class="check-icon"></span> Buscam crescer de forma mais estratégica</li>
+        </ul>
+      </div>
+      <div class="sobre-card">
+        <span class="label">Sobre a Ca'as</span>
+        <div class="divider"></div>
+        <p style="color:var(--gray); font-size:.92rem; line-height:1.75; margin-bottom:1.2rem;">
+          A Ca'as nasceu com o propósito de ajudar empresas a evoluírem com estrutura, clareza e estratégia. A experiência combina anos de atuação em:
+        </p>
+        <ul class="sobre-exp">
+          <li>Gestão comercial</li>
+          <li>Desenvolvimento de negócios</li>
+          <li>Estruturação de processos</li>
+          <li>Liderança e desenvolvimento de equipes</li>
+          <li>Estratégia de crescimento</li>
+        </ul>
+        <div class="sobre-frase">
+          Acreditamos que crescimento sustentável acontece quando estratégia, operação e execução caminham juntas.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ────────────────────────────────────────────────────── -->
+<section id="cta-final">
+  <div class="container">
+    <span class="label">Próximo passo</span>
+    <div class="divider" style="margin-left:auto; margin-right:auto;"></div>
+    <h2>Crescimento consistente não acontece por acaso.</h2>
+    <p>
+      Ele é resultado de estratégia, estrutura e execução.<br>
+      Se sua empresa está crescendo e você sente que precisa de mais estrutura para evoluir com consistência, podemos conversar.
+    </p>
+    <a href="https://wa.me/5511971699576" class="btn btn-primary" target="_blank">Agendar uma conversa</a>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border); margin-bottom:1.5rem;">
+      <div>
+        <h3 style="font-family:var(--font-d); font-size:1.1rem; margin-bottom:.3rem;">Ca'as Consultoria</h3>
+        <p style="font-size:.82rem; color:var(--gray);">Vinhedo, São Paulo, Brasil</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/5511971699576" class="social-btn" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/carolalves28/" class="social-btn" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </a>
+        <a href="mailto:caasconsultoriahoaas@gmail.com" class="social-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          E-mail
+        </a>
+      </div>
+    </div>
+    <p style="font-size:.78rem; color:var(--gray2);">© 2026 Ca'as Consultoria. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>
