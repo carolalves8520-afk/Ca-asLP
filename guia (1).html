@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia prático para empresas | Ca'as Consultoria</title>
+  <meta name="description" content="Sua empresa cresceu. E agora? Baixe o guia gratuito e descubra como estruturar sua operação antes que o caos tome conta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:    #1A1A1C;
+      --dark2:   #2C2C2E;
+      --gold:    #B8956A;
+      --gold2:   #D4AF82;
+      --offwhite:#F5F0EA;
+      --muted:   #A09890;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--dark);
+      color: var(--offwhite);
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 22px 24px;
+      border-bottom: 1px solid rgba(184,149,106,0.12);
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 72px 24px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; gap: 48px; padding: 48px 20px 40px; }
+      .hero-visual { order: -1; }
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--offwhite);
+      margin-bottom: 20px;
+    }
+
+    .hero-title span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    /* checklist */
+    .checklist {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--offwhite);
+      margin-bottom: 12px;
+      line-height: 1.5;
+      opacity: 0.88;
+    }
+
+    .checklist li::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      background: rgba(184,149,106,0.15);
+      border: 1px solid rgba(184,149,106,0.4);
+      border-radius: 50%;
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='%23B8956A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ── FORM ── */
+    .form-card {
+      background: var(--dark2);
+      border: 1px solid rgba(184,149,106,0.2);
+      border-radius: 14px;
+      padding: 36px 32px;
+    }
+
+    .form-label-top {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--offwhite);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .form-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .field input {
+      width: 100%;
+      background: var(--dark);
+      border: 1px solid rgba(184,149,106,0.2);
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      color: var(--offwhite);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus {
+      border-color: rgba(184,149,106,0.6);
+    }
+
+    .field input::placeholder { color: rgba(160,152,144,0.5); }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { background: var(--gold2); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .form-footer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 14px;
+      opacity: 0.7;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(184,149,106,0.12);
+      border: 1px solid rgba(184,149,106,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--offwhite);
+      margin-bottom: 10px;
+    }
+
+    .success-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .success-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      border: 1px solid rgba(184,149,106,0.3);
+      border-radius: 8px;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: var(--offwhite);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+
+    .success-link:hover { border-color: var(--gold); }
+
+    /* ── SOCIAL PROOF ── */
+    .proof {
+      border-top: 1px solid rgba(184,149,106,0.1);
+      padding: 56px 24px;
+    }
+
+    .proof-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    @media (max-width: 580px) {
+      .proof-inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    .proof-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .proof-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── PREVIEW ── */
+    .preview {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    .preview-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .preview-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--offwhite);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .chapters {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 580px) { .chapters { grid-template-columns: 1fr; } }
+
+    .chapter-card {
+      background: var(--dark2);
+      border-radius: 10px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .chapter-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.35;
+      min-width: 28px;
+      line-height: 1;
+    }
+
+    .chapter-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--offwhite);
+      margin-bottom: 4px;
+    }
+
+    .chapter-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(184,149,106,0.1);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .footer-ig {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-ig a {
+      color: var(--gold2);
+      text-decoration: none;
+    }
+
+    /* ── BOOK MOCKUP ── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .book-mockup {
+      width: 220px;
+      height: 310px;
+      background: var(--dark2);
+      border-radius: 4px 10px 10px 4px;
+      position: relative;
+      box-shadow: -6px 8px 30px rgba(0,0,0,0.5), 6px 6px 20px rgba(184,149,106,0.08);
+      overflow: hidden;
+      border: 1px solid rgba(184,149,106,0.15);
+    }
+
+    .book-spine {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 18px;
+      background: rgba(184,149,106,0.25);
+      border-right: 1px solid rgba(184,149,106,0.2);
+    }
+
+    .book-top-bar {
+      position: absolute;
+      top: 0; left: 18px; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+    }
+
+    .book-content {
+      position: absolute;
+      left: 26px; right: 14px; top: 24px; bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-tag-text {
+      font-size: 5.5px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .book-title-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--offwhite);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .book-title-text span { color: var(--gold); }
+
+    .book-sub-text {
+      font-size: 6.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+
+    .book-divider {
+      width: 28px;
+      height: 1.5px;
+      background: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .book-brand-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 8px;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .book-circle-1 {
+      position: absolute;
+      right: -20px;
+      top: 40%;
+      width: 100px;
+      height: 100px;
+      border: 1px solid rgba(184,149,106,0.12);
+      border-radius: 50%;
+    }
+
+    .book-circle-2 {
+      position: absolute;
+      right: 5px;
+      top: 40%;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(184,149,106,0.2);
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+
+    .book-bottom-bar {
+      position: absolute;
+      bottom: 0; left: 18px; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      opacity: 0.4;
+    }
+  </style>
+  <!-- MailerLite Universal -->
+  <script>(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);l.async=1;l.src=u;l.onload=function(){w[f](u=d.getElementsByTagName('script')[0],n=u.parentNode,n.insertBefore(l,u));}})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2146294');</script>
+  <!-- End MailerLite Universal -->
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<nav>
+  <div class="brand">Ca'as Consultoria</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Guia prático gratuito</div>
+    <h1 class="hero-title">
+      Sua empresa cresceu.<br><span>E agora?</span>
+    </h1>
+    <p class="hero-sub">
+      O guia prático para estruturar a operação antes que o caos tome conta e transformar crescimento em resultado sustentável.
+    </p>
+
+    <ul class="checklist">
+      <li>Os 4 sinais de que sua operação ficou para trás</li>
+      <li>O que uma operação bem estruturada parece na prática</li>
+      <li>Por onde começar sem parar a empresa</li>
+      <li>Quando faz sentido trazer um especialista</li>
+    </ul>
+
+    <div style="font-size:0.78rem;color:var(--muted);">
+      Leitura rápida. Conteúdo direto. Zero enrolação.
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <!-- Book mockup -->
+    <div class="book-mockup">
+      <div class="book-spine"></div>
+      <div class="book-top-bar"></div>
+      <div class="book-circle-1"></div>
+      <div class="book-circle-2"></div>
+      <div class="book-content">
+        <div class="book-tag-text">Guia prático para empresas</div>
+        <div class="book-title-text">Sua empresa cresceu.<br><span>E agora?</span></div>
+        <div class="book-sub-text">O guia prático para estruturar a operação antes que o caos tome conta.</div>
+        <div class="book-divider"></div>
+        <div class="book-brand-text">Ca'as Consultoria</div>
+      </div>
+      <div class="book-bottom-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section style="max-width:480px;margin:-20px auto 0;padding:0 24px 72px;" id="form-section">
+  <div class="form-card">
+    <div class="form-label-top">Baixar agora</div>
+
+    <!-- Formulário MailerLite completo -->
+    <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1773240");</style>
+    <style type="text/css">
+    .ml-form-embedSubmitLoad{display:inline-block;width:20px;height:20px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ml-form-embedSubmitLoad:after{content:" ";display:block;width:11px;height:11px;margin:1px;border-radius:50%;border:4px solid #fff;border-color:#fff #fff #fff transparent;animation:ml-form-embedSubmitLoad 1.2s linear infinite}@keyframes ml-form-embedSubmitLoad{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}#mlb2-38395278.ml-form-embedContainer{box-sizing:border-box;display:table;margin:0 auto;position:static;width:100%!important}#mlb2-38395278.ml-form-embedContainer h4,#mlb2-38395278.ml-form-embedContainer p,#mlb2-38395278.ml-form-embedContainer span,#mlb2-38395278.ml-form-embedContainer button{text-transform:none!important;letter-spacing:normal!important}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper{background-color:#f6f6f6;border-width:0;border-color:transparent;border-radius:4px;border-style:solid;box-sizing:border-box;display:inline-block!important;margin:0;padding:0;position:relative}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper.embedForm{max-width:400px;width:100%}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody{padding:20px 20px 0 20px}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent{text-align:left;margin:0 0 20px 0}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4{color:#000;font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:30px;font-weight:400;margin:0 0 10px 0;text-align:left;word-break:break-word}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p{color:#000;font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;line-height:20px;margin:0 0 10px 0;text-align:left}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label{margin-bottom:5px;color:#333;font-size:14px;font-family:'Open Sans',Arial,Helvetica,sans-serif;font-weight:700;display:inline-block;line-height:20px}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form{margin:0;width:100%}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent{margin:0 0 20px 0;width:100%}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow{margin:0 0 10px 0;width:100%}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item{margin:0}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input{background-color:#fff!important;color:#333!important;border-color:#ccc;border-radius:4px!important;border-style:solid!important;border-width:1px!important;font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:14px!important;height:auto;line-height:21px!important;margin:0;padding:10px!important;width:100%!important;box-sizing:border-box!important;max-width:100%!important}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit{margin:0 0 20px 0;float:left;width:100%}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button{background-color:#000!important;border:none!important;border-radius:4px!important;box-shadow:none!important;color:#fff!important;cursor:pointer;font-family:'Open Sans',Arial,Helvetica,sans-serif!important;font-size:14px!important;font-weight:700!important;line-height:21px!important;height:auto;padding:10px!important;width:100%!important;box-sizing:border-box!important}#mlb2-38395278.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover{background-color:#333!important}.ml-error input{border-color:red!important}.ml-error label:first-child{color:#f00!important}
+    </style>
+
+    <div id="mlb2-38395278" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38395278">
+      <div class="ml-form-align-center">
+        <div class="ml-form-embedWrapper embedForm">
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+            <div class="ml-form-embedContent">
+              <h4>Ebook gratuito</h4>
+              <p>Preencha os dados abaixo. Você recebe o material imediatamente.</p>
+            </div>
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2146294/forms/181780708763632929/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                <div class="ml-form-fieldRow">
+                  <div class="ml-field-group ml-field-name">
+                    <label>Nome</label>
+                    <input aria-label="name" type="text" class="form-control" name="fields[name]" placeholder="" autocomplete="given-name">
+                  </div>
+                </div>
+                <div class="ml-form-fieldRow">
+                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                    <label>E-mail</label>
+                    <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="" autocomplete="email">
+                  </div>
+                </div>
+                <div class="ml-form-fieldRow ml-last-item">
+                  <div class="ml-field-group ml-field-company ml-validate-required">
+                    <label>Empresa</label>
+                    <input aria-label="company" aria-required="true" type="text" class="form-control" name="fields[company]" placeholder="" autocomplete="">
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="ml-submit" value="1">
+              <div class="ml-form-embedSubmit">
+                <button type="submit" class="primary">Quero o guia gratuito</button>
+                <button disabled="disabled" style="display:none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+          <div class="ml-form-successBody row-success" style="display:none">
+            <div class="ml-form-successContent">
+              <h4>Obrigada!</h4>
+              <p>Você receberá o material no seu e-mail em instantes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function ml_webform_success_38395278() {
+        var $ = ml_jQuery || jQuery;
+        $('.ml-subscribe-form-38395278 .row-success').show();
+        $('.ml-subscribe-form-38395278 .row-form').hide();
+        setTimeout(function() {
+          window.open('https://carolalves8520-afk.github.io/Ca-asLP/ebook_caas_consultoria.pdf', '_blank');
+        }, 800);
+      }
+    </script>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+    <script>fetch("https://assets.mailerlite.com/jsonp/2146294/forms/181780708763632929/takel")</script>
+
+    <!-- Link Instagram após envio -->
+    <div id="download-area" style="display:none;text-align:center;margin-top:20px;">
+      <a href="https://instagram.com/carolalves28" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:#F5F0EA;font-size:0.88rem;text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#B8956A" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="#B8956A" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="#B8956A"/></svg>
+        Acompanhe no Instagram: @carolalves28
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="proof">
+  <div class="proof-inner">
+    <div>
+      <div class="proof-number">5 capítulos</div>
+      <div class="proof-label">de conteúdo prático e direto ao ponto</div>
+    </div>
+    <div>
+      <div class="proof-number">60 min</div>
+      <div class="proof-label">é o tempo de leitura estimado do guia completo</div>
+    </div>
+    <div>
+      <div class="proof-number">100%</div>
+      <div class="proof-label">baseado em casos reais de empresas de serviços</div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW DOS CAPÍTULOS -->
+<section class="preview">
+  <div class="preview-tag">Conteúdo</div>
+  <div class="preview-title">O que está dentro do guia</div>
+
+  <div class="chapters">
+    <div class="chapter-card">
+      <div class="chapter-num">01</div>
+      <div>
+        <div class="chapter-name">O paradoxo do crescimento</div>
+        <div class="chapter-desc">Por que crescer pode ser o maior risco da sua empresa</div>
+      </div>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">02</div>
+      <div>
+        <div class="chapter-name">Os 4 sinais de alerta</div>
+        <div class="chapter-desc">Como saber se sua operação ficou para trás</div>
+      </div>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">03</div>
+      <div>
+        <div class="chapter-name">Como uma operação estruturada funciona</div>
+        <div class="chapter-desc">O que muda quando processos, times e dados trabalham juntos</div>
+      </div>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">04</div>
+      <div>
+        <div class="chapter-name">Por onde começar</div>
+        <div class="chapter-desc">Três ações concretas sem parar a empresa</div>
+      </div>
+    </div>
+    <div class="chapter-card" style="grid-column: span 2;">
+      <div class="chapter-num">05</div>
+      <div>
+        <div class="chapter-name">Quando faz sentido trazer um especialista</div>
+        <div class="chapter-desc">O momento certo de pedir ajuda e o que esperar disso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Ca'as Consultoria</div>
+  <div class="footer-ig">
+    <a href="https://instagram.com/carolalves28" target="_blank" rel="noopener">@carolalves28</a>
+  </div>
+</footer>
+
+
+</body>
+</html>
