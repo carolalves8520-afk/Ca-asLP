@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Ca'as Consultoria | Apresentação</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1A1A1C; --bg2:#202024; --panel:#242329;
+  --gold:#B8956A; --gold-l:#D4B896; --gold-d:#8B6F47;
+  --off:#F5F0EA; --muted:#A09080; --soft:#cfc7bd; --line:rgba(184,149,106,.24);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Montserrat',system-ui,sans-serif;
+}
+@page{size:1080px 1350px; margin:0}
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{background:#111}
+body{font-family:var(--sans); color:var(--off); -webkit-font-smoothing:antialiased}
+a{color:inherit; text-decoration:none}
+
+.slide{width:1080px; height:1350px; position:relative; overflow:hidden; background:var(--bg);
+  padding:96px 90px 80px; display:flex; flex-direction:column; page-break-after:always; break-after:page}
+.slide:last-child{page-break-after:auto; break-after:auto}
+.slide.tint{background:var(--bg2)}
+.slide::before{content:""; position:absolute; top:0; left:0; right:0; height:8px;
+  background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold-d))}
+.circles{position:absolute; pointer-events:none; z-index:0}
+.glow{position:absolute; border-radius:50%; z-index:0;
+  background:radial-gradient(circle,rgba(184,149,106,.18),transparent 65%)}
+.ghost{position:absolute; right:40px; bottom:-40px; font-family:var(--serif); font-weight:700;
+  color:var(--gold); opacity:.06; font-size:420px; line-height:.8; z-index:0}
+.in{position:relative; z-index:2; display:flex; flex-direction:column; flex:1}
+
+.top{display:flex; justify-content:space-between; align-items:center; margin-bottom:56px}
+.brand{font-family:var(--serif); font-size:40px; font-weight:600; letter-spacing:.02em}
+.brand i{font-style:normal; color:var(--gold)}
+.brand small{color:var(--muted); font-family:var(--sans); font-weight:400; font-size:16px;
+  letter-spacing:.18em; text-transform:uppercase; margin-left:10px}
+.pg{font-size:18px; letter-spacing:.2em; color:var(--muted)}
+.pg b{color:var(--gold); font-weight:600}
+
+.eyebrow{font-size:20px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold);
+  font-weight:600; margin-bottom:28px}
+h1,h2{font-family:var(--serif); font-weight:600; line-height:1.06}
+h1{font-size:90px}
+h2{font-size:76px}
+h1 em,h2 em{font-style:italic; color:var(--gold-l)}
+.lead{color:var(--muted); font-size:28px; line-height:1.55; margin-top:30px; max-width:860px}
+.lead b{color:var(--off); font-weight:500}
+.foot{margin-top:auto; padding-top:40px; display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid var(--line); font-size:19px; color:var(--muted); letter-spacing:.06em}
+.foot b{color:var(--gold-l); font-weight:500}
+
+/* capa */
+.cover-grid{display:grid; grid-template-columns:1fr 330px; gap:50px; align-items:center; margin-top:50px}
+.frame{padding:10px; background:linear-gradient(140deg,var(--gold-l),var(--gold-d)); border-radius:3px;
+  box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.frame img{display:block; width:100%; border-radius:2px}
+.cap{margin-top:22px; font-size:20px; line-height:1.5}
+.cap b{color:var(--gold-l); font-weight:600}
+.anchors{display:grid; grid-template-columns:repeat(3,1fr); margin-top:auto;
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.anchor{padding:34px 18px; text-align:center; border-right:1px solid var(--line)}
+.anchor:last-child{border-right:none}
+.anchor .big{font-family:var(--serif); font-weight:600; font-size:40px; white-space:nowrap; color:var(--gold-l); line-height:1}
+.anchor .lab{color:var(--muted); font-size:18px; margin-top:12px; line-height:1.4}
+
+/* sintoma */
+.quote{font-family:var(--serif); font-style:italic; font-size:42px; line-height:1.3;
+  border-left:3px solid var(--gold); padding-left:32px; margin:46px 0 54px}
+.slist{list-style:none; display:flex; flex-direction:column; gap:26px}
+.slist li{display:flex; gap:24px; align-items:flex-start; color:var(--soft); font-size:30px; line-height:1.4}
+.slist li::before{content:""; flex:0 0 12px; height:12px; margin-top:15px; background:var(--gold); transform:rotate(45deg)}
+.bridge{margin-top:50px; font-size:27px; color:var(--muted); line-height:1.5}
+.bridge b{color:var(--off); font-weight:500}
+
+/* modelo */
+.cards{display:flex; flex-direction:column; gap:22px; margin-top:46px}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:30px 40px;
+  display:flex; gap:34px; align-items:flex-start}
+.card .k{flex:0 0 66px; font-family:var(--serif); font-size:56px; color:var(--gold); font-weight:600; line-height:1}
+.card h3{font-family:var(--serif); font-size:40px; font-weight:600; margin-bottom:10px}
+.card p{color:var(--muted); font-size:25px; line-height:1.5}
+
+/* frentes */
+.frentes{margin-top:40px; border-top:1px solid var(--line)}
+.frente{display:flex; gap:32px; padding:22px 0; border-bottom:1px solid var(--line)}
+.frente .fn{font-family:var(--serif); font-size:40px; color:var(--gold); font-weight:600; line-height:1; flex:0 0 60px}
+.frente h4{font-size:29px; font-weight:600; margin-bottom:8px}
+.frente p{color:var(--muted); font-size:22px; line-height:1.45}
+
+/* diagnóstico */
+.panel{background:linear-gradient(150deg,rgba(184,149,106,.12),rgba(184,149,106,.02));
+  border:1.5px solid var(--gold); border-radius:5px; padding:44px 46px; margin-top:44px}
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:30px}
+.step{border-top:3px solid var(--gold); padding-top:22px}
+.step .n{font-family:var(--serif); font-size:48px; color:var(--gold-l); font-weight:600; line-height:1}
+.step h4{font-size:27px; font-weight:600; margin:10px 0 10px}
+.step p{color:var(--muted); font-size:21px; line-height:1.5}
+.out{margin-top:36px; font-size:26px; line-height:1.5; color:#d7cfc4}
+.out b{color:var(--off); font-weight:600}
+.credit{border:1.5px dashed var(--gold); border-radius:4px; padding:30px 36px; margin-top:40px; background:rgba(184,149,106,.06)}
+.tag{font-size:17px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-l); font-weight:600; display:block; margin-bottom:12px}
+.credit p{color:#d7cfc4; font-size:24px; line-height:1.5}
+.credit b{color:var(--off); font-weight:600}
+
+/* formatos */
+.fmt{display:flex; flex-direction:column; gap:16px; margin-top:40px}
+.f{background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:22px 34px}
+.f.first{border-color:var(--gold); background:linear-gradient(150deg,rgba(184,149,106,.12),rgba(184,149,106,.02))}
+.f .tag{margin-bottom:8px; font-size:16px}
+.f h3{font-family:var(--serif); font-size:36px; font-weight:600; line-height:1.1}
+.f p{color:var(--muted); font-size:21px; line-height:1.45; margin-top:6px}
+.fit{margin-top:28px; display:grid; grid-template-columns:1fr; gap:14px}
+.fitline{font-size:22px; color:var(--soft); line-height:1.5; display:flex; gap:16px}
+.fitline::before{content:"\2713"; color:var(--gold); font-weight:600}
+
+/* final */
+.final{justify-content:center; text-align:center}
+.final h2{font-size:84px; max-width:860px; margin:0 auto}
+.final .lead{margin:36px auto 0; text-align:center}
+.btn{display:inline-block; margin:60px auto 0; background:linear-gradient(120deg,var(--gold-l),var(--gold));
+  color:#1A1A1C; font-weight:600; font-size:30px; padding:30px 56px; border-radius:3px; letter-spacing:.02em}
+.contact{margin-top:34px; font-size:26px; color:var(--off); letter-spacing:.04em}
+.contact span{color:var(--muted)}
+.links{margin-top:70px; display:grid; grid-template-columns:1fr 1fr; gap:18px; text-align:left}
+.lk{border:1px solid var(--line); border-radius:3px; padding:24px 28px; background:rgba(36,35,41,.7)}
+.lk .tag{font-size:15px; margin-bottom:6px}
+.lk div{font-size:21px; color:var(--off); white-space:nowrap}
+.sign{margin-top:64px; font-size:21px; color:var(--muted); line-height:1.6}
+.sign b{color:var(--gold-l); font-weight:500}
+</style>
+</head>
+<body>
+
+<!-- 1. CAPA -->
+<section class="slide">
+  <div class="glow" style="width:900px;height:900px;right:-300px;top:-120px"></div>
+  <svg class="circles" style="right:-260px;top:120px;width:900px;height:900px;opacity:.6" viewBox="0 0 640 640" fill="none"><circle cx="320" cy="320" r="147" stroke="#B8956A" stroke-opacity=".5"/><circle cx="320" cy="320" r="217" stroke="#B8956A" stroke-opacity=".3"/><circle cx="320" cy="320" r="288" stroke="#B8956A" stroke-opacity=".16"/></svg>
+  <div class="in">
+    <div class="top"><div class="brand">Ca<i>'</i>as<small>Consultoria</small></div><div class="pg"><b>01</b> / 07</div></div>
+    <div class="eyebrow">Head of Operations as a Service</div>
+    <h1>Sua empresa cresceu.<br>A operação ficou <em>pra trás</em>.</h1>
+    <div class="cover-grid">
+      <p class="lead" style="margin-top:0">Eu entro como sua chefe de operações, <b>sem salário de diretoria e sem encargo fixo</b>. Organizo processos, estruturo times e preparo líderes para o negócio andar sem depender de você em cada decisão.</p>
+      <div>
+        <div class="frame"><img src="../img/carol-1.jpg" alt="Carol Alves"></div>
+        <div class="cap">Carol Alves<br><b>Head de operações fracionada</b></div>
+      </div>
+    </div>
+    <div class="anchors">
+      <div class="anchor"><div class="big">+20 anos</div><div class="lab">em vendas e na área comercial</div></div>
+      <div class="anchor"><div class="big">+10 anos</div><div class="lab">liderando times como head comercial e de operações</div></div>
+      <div class="anchor"><div class="big">R$500 mil–15 mi</div><div class="lab">faturamento anual das empresas que atendo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. SINTOMA -->
+<section class="slide tint">
+  <span class="ghost">?</span>
+  <div class="in">
+    <div class="top"><div class="brand">Ca<i>'</i>as</div><div class="pg"><b>02</b> / 07</div></div>
+    <div class="eyebrow">O sintoma</div>
+    <h2>A operação acompanhou o crescimento?</h2>
+    <p class="quote">Crescer sem estrutura não é crescimento. É acúmulo de problemas que o sucesso ainda não mostrou.</p>
+    <ul class="slist">
+      <li>O dono resolve tudo e virou o gargalo da própria empresa.</li>
+      <li>Os processos existem na cabeça das pessoas, não no papel.</li>
+      <li>O time cresceu, mas o resultado não cresceu junto.</li>
+      <li>As vendas dependem de poucos pontos de entrada.</li>
+      <li>Decisões no achismo, sem cadência e sem número.</li>
+      <li>Áreas que não se falam e geram retrabalho todo dia.</li>
+    </ul>
+    <p class="bridge">Reconheceu dois ou três? O <b>diagnóstico operacional</b> mostra qual deles está custando mais caro agora.</p>
+  </div>
+</section>
+
+<!-- 3. MODELO -->
+<section class="slide">
+  <span class="ghost">03</span>
+  <div class="in">
+    <div class="top"><div class="brand">Ca<i>'</i>as</div><div class="pg"><b>03</b> / 07</div></div>
+    <div class="eyebrow">O modelo</div>
+    <h2>Uma chefe de operações, <em>na medida</em> da sua empresa.</h2>
+    <p class="lead">HOaaS: a presença e a experiência de uma executiva sênior de operações, no ritmo que a sua empresa precisa, sem carteira assinada.</p>
+    <div class="cards">
+      <div class="card"><div class="k">01</div><div><h3>Presença de verdade</h3><p>Não é consultoria de slide. Eu entro na operação e trabalho lado a lado com o seu time.</p></div></div>
+      <div class="card"><div class="k">02</div><div><h3>Sem cargo fixo</h3><p>Você paga pela senioridade e pelo resultado, não por salário de diretor mais encargos.</p></div></div>
+      <div class="card"><div class="k">03</div><div><h3>Com data pra sair</h3><p>O objetivo é a sua autonomia. Eu construo para a empresa andar sem mim.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. FRENTES -->
+<section class="slide tint">
+  <div class="in">
+    <div class="top"><div class="brand">Ca<i>'</i>as</div><div class="pg"><b>04</b> / 07</div></div>
+    <div class="eyebrow">O que eu faço</div>
+    <h2>Do diagnóstico à <em>autonomia</em>.</h2>
+    <p class="lead">Processo depende de time. Time depende de líder. Canal depende de operação. Eu trabalho no sistema, não no sintoma solto.</p>
+    <div class="frentes">
+      <div class="frente"><div class="fn">01</div><div><h4>Processos e operações</h4><p>Mapeio, redesenho e documento quem faz o quê, do fluxo de trabalho à entrega.</p></div></div>
+      <div class="frente"><div class="fn">02</div><div><h4>Times e departamentos</h4><p>Papéis claros, comunicação entre áreas e rituais de gestão que mantêm o time alinhado.</p></div></div>
+      <div class="frente"><div class="fn">03</div><div><h4>Canais de crescimento</h4><p>Parceiros, canais complementares e alianças, para não depender de uma única porta de entrada.</p></div></div>
+      <div class="frente"><div class="fn">04</div><div><h4>Mercado e posicionamento</h4><p>Leitura do cenário competitivo e definição de onde a empresa se posiciona.</p></div></div>
+      <div class="frente"><div class="fn">05</div><div><h4>Comunidade e fãs da marca</h4><p>Pertencimento que segura cliente e transforma comprador em quem defende a marca.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DIAGNÓSTICO -->
+<section class="slide">
+  <svg class="circles" style="left:-260px;bottom:-240px;width:800px;height:800px;opacity:.5" viewBox="0 0 560 560" fill="none"><circle cx="280" cy="280" r="128" stroke="#B8956A" stroke-opacity=".5"/><circle cx="280" cy="280" r="190" stroke="#B8956A" stroke-opacity=".3"/><circle cx="280" cy="280" r="252" stroke="#B8956A" stroke-opacity=".16"/></svg>
+  <div class="in">
+    <div class="top"><div class="brand">Ca<i>'</i>as</div><div class="pg"><b>05</b> / 07</div></div>
+    <div class="eyebrow">O primeiro passo</div>
+    <h2>Tudo começa pelo <em>diagnóstico operacional</em>.</h2>
+    <p class="lead">Um trabalho com entrega própria, não uma conversa de venda disfarçada.</p>
+    <div class="panel">
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h4>Imersão</h4><p>Olho processo, time, canais e números por dentro.</p></div>
+        <div class="step"><div class="n">2</div><h4>Análise</h4><p>Identifico o gargalo que trava o crescimento e o que ele custa.</p></div>
+        <div class="step"><div class="n">3</div><h4>Entrega</h4><p>Mapa do que precisa mudar, na ordem de prioridade.</p></div>
+      </div>
+      <p class="out">Você sai sabendo <b>onde está o gargalo, o que ele custa e por onde começar.</b></p>
+      <div class="credit">
+        <span class="tag">Se você seguir comigo</span>
+        <p>Fechando o projeto completo de estruturação, <b>parte do valor do diagnóstico entra como desconto</b>, combinado de acordo com o escopo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. FORMATOS -->
+<section class="slide tint">
+  <div class="in">
+    <div class="top"><div class="brand">Ca<i>'</i>as</div><div class="pg"><b>06</b> / 07</div></div>
+    <div class="eyebrow">Como trabalhar comigo</div>
+    <h2>Um ponto de partida. <em>Formatos</em> que cabem.</h2>
+    <div class="fmt">
+      <div class="f first"><span class="tag">Primeiro passo</span><h3>Diagnóstico operacional</h3><p>Imersão, análise do gargalo e mapa de prioridades por escrito.</p></div>
+      <div class="f"><span class="tag">Formato A</span><h3>Projeto de estruturação</h3><p>Escopo fechado de 30, 60 ou 90 dias: comercial, processos ou liderança. O plano fica com a empresa.</p></div>
+      <div class="f"><span class="tag">Formato B</span><h3>Operação fracionada contínua</h3><p>Sua head de operações alguns dias por semana, acompanhando a execução e os indicadores.</p></div>
+      <div class="f"><span class="tag">Desenvolvimento</span><h3>Mentoria de liderança e de vendas</h3><p>Método para primeira liderança e para um comercial previsível, menos dependente de poucos.</p></div>
+    </div>
+    <div class="fit">
+      <div class="fitline">Reunião semanal com os gestores e resumo executivo por semana (A e B)</div>
+      <div class="fitline">Base em Vinhedo, SP. Presencial na região e remoto para todo o Brasil</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FINAL -->
+<section class="slide final">
+  <div class="glow" style="width:1000px;height:1000px;left:40px;top:120px"></div>
+  <svg class="circles" style="left:50%;top:50%;width:1100px;height:1100px;transform:translate(-50%,-55%);opacity:.55" viewBox="0 0 720 720" fill="none"><circle cx="360" cy="360" r="165" stroke="#B8956A" stroke-opacity=".5"/><circle cx="360" cy="360" r="244" stroke="#B8956A" stroke-opacity=".3"/><circle cx="360" cy="360" r="324" stroke="#B8956A" stroke-opacity=".16"/></svg>
+  <div class="in" style="justify-content:center">
+    <div class="brand" style="font-size:56px; margin-bottom:70px">Ca<i>'</i>as<small>Consultoria</small></div>
+    <h2>Crescimento com consistência não acontece <em>por acaso</em>.</h2>
+    <p class="lead">É resultado de estrutura, método e execução. O formato e o investimento a gente combina numa conversa rápida, sem compromisso.</p>
+    <a class="btn" href="https://wa.me/5511971699576?text=Oi%20Carol%2C%20quero%20saber%20sobre%20o%20diagn%C3%B3stico%20para%20a%20minha%20empresa.">Quero meu diagnóstico</a>
+    <div class="contact">WhatsApp <span>·</span> (11) 97169-9576</div>
+    <div class="links">
+      <a class="lk" href="https://carolalves8520-afk.github.io/Ca-asLP/"><span class="tag">Site</span><div>carolalves8520-afk.github.io</div></a>
+      <a class="lk" href="https://instagram.com/carolalves28"><span class="tag">Instagram</span><div>@carolalves28</div></a>
+      <a class="lk" href="https://www.linkedin.com/newsletters/desenrolando-opera%C3%A7%C3%B5es-7438192048630837248/"><span class="tag">Newsletter LinkedIn</span><div>Desenrolando Operações</div></a>
+      <a class="lk" href="mailto:caasconsultoriahoaas@gmail.com"><span class="tag">E-mail</span><div>caasconsultoriahoaas@gmail.com</div></a>
+    </div>
+    <p class="sign"><b>Carol Alves</b> · Fundadora da Ca'as Consultoria · Vinhedo, SP</p>
+  </div>
+</section>
+
+</body>
+</html>
